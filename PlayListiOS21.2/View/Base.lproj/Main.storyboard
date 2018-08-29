@@ -22,6 +22,9 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XWk-dy-rhR">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
+                                </imageView>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a playlist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXP-7a-cAF">
                                     <rect key="frame" x="38" y="26" width="300" height="30"/>
                                     <nil key="textColor"/>
@@ -32,12 +35,16 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="fXP-7a-cAF" firstAttribute="centerY" secondItem="85f-7R-2EB" secondAttribute="centerY" id="1ac-1V-x5F"/>
+                                <constraint firstItem="XWk-dy-rhR" firstAttribute="top" secondItem="85f-7R-2EB" secondAttribute="top" id="BOz-So-iC7"/>
                                 <constraint firstItem="fXP-7a-cAF" firstAttribute="width" secondItem="85f-7R-2EB" secondAttribute="width" multiplier="0.8" id="I3g-hu-TOl"/>
                                 <constraint firstItem="fXP-7a-cAF" firstAttribute="centerX" secondItem="85f-7R-2EB" secondAttribute="centerX" id="IcR-Xv-bba"/>
+                                <constraint firstItem="XWk-dy-rhR" firstAttribute="centerY" secondItem="85f-7R-2EB" secondAttribute="centerY" id="guz-6X-p4v"/>
+                                <constraint firstItem="XWk-dy-rhR" firstAttribute="leading" secondItem="85f-7R-2EB" secondAttribute="leading" id="xhh-RN-1kz"/>
+                                <constraint firstItem="XWk-dy-rhR" firstAttribute="centerX" secondItem="85f-7R-2EB" secondAttribute="centerX" id="zKe-Of-Trc"/>
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="FwT-c5-wOL" detailTextLabel="kaG-9V-yF2" rowHeight="85" style="IBUITableViewCellStyleValue1" id="21W-oG-35Y">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="playlistCell" textLabel="FwT-c5-wOL" detailTextLabel="kaG-9V-yF2" rowHeight="85" style="IBUITableViewCellStyleValue1" id="21W-oG-35Y">
                                 <rect key="frame" x="0.0" y="110" width="375" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="21W-oG-35Y" id="Cth-fa-NzY">
@@ -70,9 +77,18 @@
                             <outlet property="delegate" destination="LXW-xz-Ofz" id="ybW-B9-0S5"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Playlist" id="GlE-QY-eOC">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="hWg-Ln-WmU"/>
+                    <navigationItem key="navigationItem" title="Playlist" id="reM-tr-dWQ">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="6oP-9f-Uxm"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Wjx-Lm-JHu">
+                            <connections>
+                                <action selector="addPlaylistButtonTapped:" destination="LXW-xz-Ofz" id="auG-ws-N4G"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="playlistHeaderImage" destination="XWk-dy-rhR" id="n7P-PV-UEQ"/>
+                        <outlet property="playlistTextField" destination="fXP-7a-cAF" id="rzD-ty-8wU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iT4-Yi-6Ry" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -90,8 +106,11 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M8r-83-Avg">
+                                    <rect key="frame" x="0.0" y="-2" width="375" height="111"/>
+                                </imageView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="6k2-ak-mhT">
-                                    <rect key="frame" x="37" y="12" width="300" height="82"/>
+                                    <rect key="frame" x="37" y="13" width="300" height="82"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="add an artist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YXY-0l-yAn">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
@@ -111,8 +130,12 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="6k2-ak-mhT" firstAttribute="centerY" secondItem="8Pn-GT-2QE" secondAttribute="centerY" id="7q7-ZW-UYT"/>
+                                <constraint firstItem="M8r-83-Avg" firstAttribute="centerY" secondItem="8Pn-GT-2QE" secondAttribute="centerY" id="7r7-mr-3ee"/>
+                                <constraint firstItem="M8r-83-Avg" firstAttribute="top" secondItem="8Pn-GT-2QE" secondAttribute="top" constant="-2" id="Ocf-wf-bue"/>
                                 <constraint firstItem="6k2-ak-mhT" firstAttribute="width" secondItem="8Pn-GT-2QE" secondAttribute="width" multiplier="0.8" id="QOd-IB-uSr"/>
+                                <constraint firstItem="M8r-83-Avg" firstAttribute="width" secondItem="8Pn-GT-2QE" secondAttribute="width" id="X8d-I4-BeJ"/>
                                 <constraint firstItem="6k2-ak-mhT" firstAttribute="centerX" secondItem="8Pn-GT-2QE" secondAttribute="centerX" id="dFz-nY-xU2"/>
+                                <constraint firstItem="M8r-83-Avg" firstAttribute="centerX" secondItem="8Pn-GT-2QE" secondAttribute="centerX" id="hSz-2O-byD"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -146,6 +169,11 @@
                             <outlet property="delegate" destination="Z3x-AQ-AGD" id="6Ce-Ou-gza"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="artistTextField" destination="YXY-0l-yAn" id="Ojn-0v-e4S"/>
+                        <outlet property="songHeaderImage" destination="M8r-83-Avg" id="gcJ-T0-iR6"/>
+                        <outlet property="songTextField" destination="j7t-N1-UNQ" id="rj2-FY-KDf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RoV-8w-eat" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
